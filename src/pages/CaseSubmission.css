@@ -1,0 +1,185 @@
+/* Global Styles */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --background-light: #f4f4f9;
+    --background-dark: #121212;
+    --text-light: #ffffff;
+    --text-dark: #333;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Fullscreen layout */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Title */
+h2 {
+    color: var(--text-light);
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
+    color:#131313;
+}
+
+/* Form */
+.case-form {
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    border: 5px;
+    border-color: black;
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 15px;
+    animation: fadeInUp 1s ease-in-out;
+    border: 5px;
+    border-color: black;
+    
+}
+
+/* Labels */
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+/* Input Fields */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    transition: all 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: rgb(19, 19, 19);
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-weight: bold;
+}
+
+button:hover {
+    background: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Response Section */
+.response-section {
+    width: 90%;
+    max-width: 600px;
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Response Box */
+.response-box {
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 5px solid var(--primary-color);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    text-align: left;
+    color: var(--text-light);
+}
+
+/* Response Heading */
+.response-box h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Response Text */
+.response-box p {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Labels */
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #131313; /* Changed to black */
+}
