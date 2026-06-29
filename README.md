@@ -1,40 +1,37 @@
 # AI-Powered Digital Judiciary System
 
-Judicial case management with role-based dashboards, REST APIs, JWT authentication, and AI-assisted legal case analysis.
+Full digital judiciary platform built with **Vaishnavi's Digital Judiciary codebase** — case management, role-based dashboards, LawGPT legal assistant, and admin panel.
 
 ## Live Demo
 
 **https://harinirajant.github.io/ai-judiciary-assistant/**
 
-Try **Case Submission** to see AI-powered case classification, suggestions, and summary (demo mode).
-
-GitHub: https://github.com/HarinirajanT/ai-judiciary-assistant
+GitHub: https://github.com/HarinirajanT/ai-judiciary-assistant  
+Original project: https://github.com/Vaishnavi160904/Digital-judiciary-
 
 ---
 
 ## Features
 
-- Case submission with AI legal analysis
-- Role-based dashboards (Admin, Judge, Lawyer)
-- REST APIs with JWT authentication
-- Legal NLP integration (BERT, T5, Hugging Face — in full-stack setup)
+- Role-based access (Lawyer, Judge, Court Staff, Admin)
+- Case submission with document upload + AI analysis
+- Case tracking and scheduling
+- LawGPT — AI legal assistant (Groq LLM)
+- Admin panel and document vault
 
 ## Tech Stack
 
-**Frontend:** React · React Router  
-**Backend:** FastAPI · MongoDB · JWT (see `backend_server` repo)
+**Frontend:** React 19 · React Router · Axios · Lucide Icons  
+**Backend:** FastAPI · MongoDB · JWT · LangChain · Groq
 
-## Run locally
+## Run locally (full stack)
+
+See the [Digital Judiciary repo](https://github.com/Vaishnavi160904/Digital-judiciary-) for backend setup with MongoDB Atlas and Groq API key.
 
 ```bash
+# Frontend
 npm install
 npm start
-```
-
-Demo mode (no backend):
-
-```bash
-REACT_APP_DEMO_MODE=true npm start
 ```
 
 ---

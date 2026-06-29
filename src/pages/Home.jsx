@@ -1,89 +1,125 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes, FaMoon, FaSun, FaUserCircle } from "react-icons/fa"; 
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  FileText,
+  MessageSquare,
+  Calendar,
+  Shield,
+  TrendingUp,
+  Users,
+} from "lucide-react";
+import "../styles/home.css";
 
-const Home = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
-    const [userLoggedIn, setUserLoggedIn] = useState(false); // Assume user is not logged in initially
-    const navigate = useNavigate(); // Hook for navigation
+const FEATURES = [
+  {
+    icon: FileText,
+    color: "#3b82f6",
+    title: "Case Management",
+    text: "Submit, track, and manage legal cases efficiently with our comprehensive digital platform",
+  },
+  {
+    icon: MessageSquare,
+    color: "#10b981",
+    title: "LawGPT Assistant",
+    text: "Get instant legal information powered by AI trained on Indian law documents including IPC and more",
+  },
+  {
+    icon: Calendar,
+    color: "#f59e0b",
+    title: "Court Scheduling",
+    text: "Automated hearing scheduling and calendar management for judges and lawyers",
+  },
+  {
+    icon: Shield,
+    color: "#8b5cf6",
+    title: "Secure & Compliant",
+    text: "Role-based access control ensures data security and regulatory compliance",
+  },
+  {
+    icon: TrendingUp,
+    color: "#ef4444",
+    title: "Real-time Updates",
+    text: "Get instant notifications about case status, hearings, and important updates",
+  },
+  {
+    icon: Users,
+    color: "#06b6d4",
+    title: "Collaborative Platform",
+    text: "Seamless collaboration between lawyers, judges, and legal professionals",
+  },
+];
 
-    // Handle dashboard click: Redirect to login if not logged in
-    const handleDashboardClick = () => {
-        if (userLoggedIn) {
-            navigate("/dashboard");
-        } else {
-            navigate("/login");
-        }
-    };
+const STEPS = [
+  {
+    number: 1,
+    title: "Register",
+    text: "Create your account as a lawyer, judge, court staff, or admin",
+  },
+  {
+    number: 2,
+    title: "Submit a Case",
+    text: "File cases with documents — AI analyzes and classifies them instantly",
+  },
+  {
+    number: 3,
+    title: "Track & Manage",
+    text: "Monitor case status, schedule hearings, and collaborate in real time",
+  },
+];
 
-    return (
-        <div className={darkMode ? "dark-mode home-container" : "home-container"}>
-            {/* Navigation Bar */}
-            <nav className="navbar">
-                <h1 style={{ color: "white" }}>⚖️ Digital Judiciary</h1>
-
-                {/* Desktop Navigation */}
-                <ul className={menuOpen ? "nav-links active" : "nav-links"}>
-                    <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-                    <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
-                    <li><Link to="/case-submission" onClick={() => setMenuOpen(false)}>Case Submission</Link></li>
-                    {/* If user is logged in, show profile dropdown */}
-                    {userLoggedIn ? (
-                        <li className="profile-menu">
-                            <FaUserCircle size={22} />
-                            <ul className="dropdown">
-                                <li><Link to="/profile">Profile</Link></li>
-                                <li><button onClick={() => setUserLoggedIn(false)}>Logout</button></li>
-                            </ul>
-                        </li>
-                    ) : (
-                        // Show Login & Signup if user is not logged in
-                        <>
-                            <li><Link to="/login">Login</Link></li>
-                            <li><Link to="/signup">Sign Up</Link></li>
-                        </>
-                    )}
-
-                    {/* Dark Mode Toggle */}
-                    <li className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
-                        {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
-                    </li>
-                </ul>
-
-                {/* Mobile Menu Icon */}
-                <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
-                    {menuOpen ? <FaTimes size={25} /> : <FaBars size={25} />}
-                </div>
-            </nav>
-
-            {/* Hero Section */}
-            <section className="hero-section">
-                <h1 className="text-4xl font-bold" style={{ color: "white" }}>
-                    Welcome to AI-Powered Digital Judiciary
-                </h1>
-                <p className="mt-2 text-lg">
-                    Revolutionizing legal processes with AI for instant resolutions.
-                </p>
-                <Link to="/case-submission">
-                    <button className="mt-4 bg-white text-blue-600 font-semibold px-6 py-2 rounded shadow hover:bg-gray-100">
-                        Submit a Case Now
-                    </button>
-                </Link>
-            </section>
-
-            {/* Call-to-Action Section */}
-            <section className="cta-section">
-                <h2 className="text-2xl text-white font-bold">Get Started Today</h2>
-                <p className="mt-2 text-lg">Experience the future of judiciary with AI-driven legal resolutions.</p>
-                <Link to="/about">
-                    <button className="mt-4 bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700">
-                        Learn More
-                    </button>
-                </Link>
-            </section>
+export default function Home() {
+  return (
+    <div className="home-page">
+      <section className="home-hero">
+        <span className="home-hero-badge">⚖️ AI-Powered Legal Platform</span>
+        <h1 className="home-hero-title">Digital Judiciary System</h1>
+        <p className="home-hero-subtitle">
+          Streamline legal processes with intelligent case management, AI-powered
+          legal assistance, and real-time case tracking for Tamil Nadu courts
+        </p>
+        <div className="home-hero-actions">
+          <Link to="/register" className="home-btn-primary">
+            Get Started Free
+          </Link>
+          <Link to="/login" className="home-btn-secondary">
+            Sign In
+          </Link>
         </div>
-    );
-};
+      </section>
 
-export default Home;
+      <section className="home-steps">
+        <h2 className="home-section-title">How It Works</h2>
+        <div className="home-steps-grid">
+          {STEPS.map((step) => (
+            <div key={step.number} className="home-step">
+              <span className="home-step-number">{step.number}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="home-section-title">Platform Features</h2>
+        <div className="home-features">
+          {FEATURES.map(({ icon: Icon, color, title, text }) => (
+            <div key={title} className="home-feature-card">
+              <Icon size={40} color={color} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="home-cta">
+        <h2>Ready to Transform Legal Management?</h2>
+        <p>Join legal professionals using our AI-powered judiciary platform</p>
+        <Link to="/register" className="home-cta-btn">
+          Get Started Today
+        </Link>
+      </section>
+    </div>
+  );
+}
