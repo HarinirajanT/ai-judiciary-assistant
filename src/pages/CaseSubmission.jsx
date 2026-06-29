@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CaseSubmission.css";
+import { analyzeCase } from "../libs/caseApi";
 
 const CaseSubmission = () => {
     const [formData, setFormData] = useState({
@@ -21,15 +22,7 @@ const CaseSubmission = () => {
         setError("");
         
         try {
-            const res = await fetch("http://localhost:5000/analyze-case", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData)
-            });
-
-            if (!res.ok) throw new Error("Failed to process case.");
-
-            const data = await res.json();
+            const data = await analyzeCase(formData);
             setResponse({
                 classification: data.classification,
                 suggestions: data.suggestions,
